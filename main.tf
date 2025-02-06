@@ -6,9 +6,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 5.0"
     }
   }
+  required_version = "~> 1.0"
+
   backend "s3" {
     bucket = "sctp-ce8-tfstate"
     key    = "royston-s3-tf-ci.tfstate"
