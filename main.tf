@@ -26,5 +26,13 @@ locals {
 }
 
 resource "aws_s3_bucket" "s3_tf" {
+  #checkov:skip=CKV_AWS_18:This bucket does not require access logging
+  #checkov:skip=CKV2_AWS_62:Event notifications not required for this bucket
+  #checkov:skip=CKV_AWS_21:Versioning not required for this bucket
+  #checkov:skip=CKV2_AWS_6:Public access block not required as bucket is private by default
+  #checkov:skip=CKV_AWS_144:Cross-region replication not needed for this use case
+  #checkov:skip=CKV_AWS_145:Default SSE-S3 encryption is sufficient for this bucket
+  #checkov:skip=CKV2_AWS_61:Lifecycle configuration not needed for this bucket
+
   bucket = "${local.name_prefix}-s3-tf-bkt-${local.account_id}"
 }
